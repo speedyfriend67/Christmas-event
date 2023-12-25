@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Tree Time</title>
+    <style>
+        body {
+            background-color: #e74c3c; /* Christmas red background */
+            color: #fff; /* White text */
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #time {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        #tree {
+            font-size: 1.5em;
+            white-space: pre-wrap;
+        }
+
+        button {
+            background-color: #2ecc71; /* Christmas green button */
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #27ae60; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1 id="time"></h1>
+    <pre id="tree"></pre>
+    <button onclick="generateTree()">Generate Tree</button>
+
+    <script>
+        // Function to update time
+        function updateTime() {
+            const now = new Date();
+            const timeElement = document.getElementById('time');
+            timeElement.textContent = 'Current Time: ' + now.toLocaleTimeString();
+        }
+
+        // Function to generate random Christmas tree
+        function generateTree() {
+            const treeElement = document.getElementById('tree');
+            const randomSpaces = Math.floor(Math.random() * 5); // Random spaces for indentation
+            const treeAscii = `
+                ${' '.repeat(randomSpaces)}*
+                ${' '.repeat(randomSpaces - 1)}***
+                ${' '.repeat(randomSpaces - 2)}*****
+                ${' '.repeat(randomSpaces - 3)}*******
+                ${' '.repeat(randomSpaces - 4)}*********
+                ${' '.repeat(randomSpaces - 5)}***********
+                ${' '.repeat(randomSpaces - 2)}*******
+            `;
+            treeElement.textContent = treeAscii;
+        }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+
+        // Initial call to display time
+        updateTime();
+    </script>
+</body>
+</html>
