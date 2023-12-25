@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spinning 3D Christmas Tree</title>
+    <title>Spinning Gradient Christmas Tree</title>
     <style>
         body {
-            background-color: #3498db; /* Christmas blue background */
+            background: linear-gradient(to bottom, #3498db, #2980b9); /* Christmas blue gradient background */
             color: #fff; /* White text */
             text-align: center;
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
         }
 
         #time {
@@ -43,7 +48,7 @@
             position: absolute;
             width: 60px;
             height: 50px;
-            background-color: #2ecc71; /* Christmas green */
+            background: linear-gradient(to bottom, #2ecc71, #27ae60); /* Christmas green gradient */
             left: -30px;
             top: -30px;
             border-radius: 4px 4px 0 0;
