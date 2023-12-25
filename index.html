@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christmas Tree Time</title>
+    <title>Spinning 3D Christmas Tree</title>
     <style>
         body {
             background-color: #3498db; /* Christmas blue background */
@@ -19,30 +19,53 @@
             margin-bottom: 20px;
         }
 
+        #tree-container {
+            perspective: 600px;
+            perspective-origin: 50% 50%;
+        }
+
         #tree {
-            font-size: 1.5em;
-            white-space: pre-wrap;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spin 10s infinite linear;
         }
 
-        button {
-            background-color: #2ecc71; /* Christmas green button */
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
+        .tree-layer {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
         }
 
-        button:hover {
-            background-color: #27ae60; /* Darker green on hover */
+        .tree-layer:before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 50px;
+            background-color: #2ecc71; /* Christmas green */
+            left: -30px;
+            top: -30px;
+            border-radius: 4px 4px 0 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotateY(0); }
+            100% { transform: rotateY(360deg); }
         }
     </style>
 </head>
 <body>
     <h1 id="time"></h1>
-    <pre id="tree"></pre>
-    <button onclick="generateTree()">Generate Tree</button>
+    <div id="tree-container">
+        <div id="tree">
+            <div class="tree-layer" style="transform: translateZ(50px);"></div>
+            <div class="tree-layer" style="transform: translateZ(100px) rotateY(120deg);"></div>
+            <div class="tree-layer" style="transform: translateZ(100px) rotateY(-120deg);"></div>
+            <div class="tree-layer" style="transform: translateZ(150px) rotateY(60deg);"></div>
+            <div class="tree-layer" style="transform: translateZ(150px) rotateY(-60deg);"></div>
+        </div>
+    </div>
 
     <script>
         // Function to update time
@@ -50,22 +73,6 @@
             const now = new Date();
             const timeElement = document.getElementById('time');
             timeElement.textContent = 'Current Time: ' + now.toLocaleTimeString();
-        }
-
-        // Function to generate random Christmas tree with numbers
-        function generateTree() {
-            const treeElement = document.getElementById('tree');
-            const randomNumbers = Math.floor(Math.random() * 5); // Random numbers for decoration
-            const treeAscii = `
-                  1
-                 232
-                34543
-               4567654
-              567898765
-             67890109876
-              567898765
-            `;
-            treeElement.textContent = treeAscii;
         }
 
         // Initial call to display time
