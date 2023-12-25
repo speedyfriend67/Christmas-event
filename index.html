@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spinning Gradient Christmas Tree</title>
+    <title>Spinning Vertical Christmas Tree</title>
     <style>
         body {
             background: linear-gradient(to bottom, #3498db, #2980b9); /* Christmas blue gradient background */
@@ -25,31 +25,28 @@
         }
 
         #tree-container {
-            perspective: 600px;
-            perspective-origin: 50% 50%;
-        }
-
-        #tree {
             position: relative;
+            width: 100px;
+            height: 200px;
             transform-style: preserve-3d;
             animation: spin 10s infinite linear;
         }
 
-        .tree-layer {
+        #tree {
             position: absolute;
             width: 0;
             height: 0;
-            border-left: 30px solid transparent;
-            border-right: 30px solid transparent;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
         }
 
-        .tree-layer:before {
+        #tree:before {
             content: '';
             position: absolute;
-            width: 60px;
-            height: 50px;
+            width: 100px;
+            height: 150px;
             background: linear-gradient(to bottom, #2ecc71, #27ae60); /* Christmas green gradient */
-            left: -30px;
+            left: -50px;
             top: -30px;
             border-radius: 4px 4px 0 0;
         }
@@ -63,13 +60,7 @@
 <body>
     <h1 id="time"></h1>
     <div id="tree-container">
-        <div id="tree">
-            <div class="tree-layer" style="transform: translateZ(50px);"></div>
-            <div class="tree-layer" style="transform: translateZ(100px) rotateY(120deg);"></div>
-            <div class="tree-layer" style="transform: translateZ(100px) rotateY(-120deg);"></div>
-            <div class="tree-layer" style="transform: translateZ(150px) rotateY(60deg);"></div>
-            <div class="tree-layer" style="transform: translateZ(150px) rotateY(-60deg);"></div>
-        </div>
+        <div id="tree"></div>
     </div>
 
     <script>
